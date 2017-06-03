@@ -3,6 +3,7 @@ import { NavController, LoadingController } from 'ionic-angular';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -20,7 +21,7 @@ export class HomePage {
 
   fetchContent(): void {
     let loading = this.loadingCtrl.create({
-      content: 'Fetching content...'
+      content: 'Carregando'
     });
 
     loading.present();
@@ -30,5 +31,9 @@ export class HomePage {
         this.feeds = data.data.children;
         loading.dismiss();
       });
+  }
+
+  itemSelected(feed): void {
+    alert(feed.data.url)
   }
 }
